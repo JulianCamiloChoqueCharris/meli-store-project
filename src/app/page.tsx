@@ -1,9 +1,12 @@
 import ProductsClientPage from "@/features/products/components/ProductsClientPage";
 
 type Search = { page?: string; limit?: string };
-type Props = { searchParams: Promise<Search> };
 
-export default async function HomePage({ searchParams }: Props) {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<Search>;
+}) {
   const sp = await searchParams;
   const page = Number(sp?.page ?? 1);
   const limit = Number(sp?.limit ?? 10);
