@@ -1,8 +1,20 @@
-export default function Home() {
+import ProductsClientPage from "@/features/products/components/ProductsClientPage";
+
+type Search = { page?: string; limit?: string };
+
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<Search>;
+}) {
+  const sp = await searchParams;
+  const page = Number(sp?.page ?? 1);
+  const limit = Number(sp?.limit ?? 10);
+
   return (
-    <main className="flex flex-col gap-4">
-      <h1 className="text-2xl font-semibold">Meli Store</h1>
-      <p className="text-sm text-gray-600">Project initialized.</p>
-    </main>
+    <>
+      <h2 className="mb-2 text-base font-semibold">All products</h2>
+      <ProductsClientPage page={page} limit={limit} />
+    </>
   );
 }
