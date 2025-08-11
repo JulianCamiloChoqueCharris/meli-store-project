@@ -1,3 +1,6 @@
+@import "primereact/resources/themes/lara-light-blue/theme.css";
+@import "primereact/resources/primereact.min.css";
+@import "primeicons/primeicons.css";
 @import "tailwindcss";
 
 :root {
@@ -23,4 +26,34 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-roboto), sans-serif;
+}
+
+.p-paginator .p-paginator-page,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-first,
+.p-paginator .p-paginator-last {
+  border: 1px solid #e5e7eb;
+  color: #303172;
+}
+
+.p-paginator .p-paginator-page.p-highlight {
+  background-color: #303172 !important;
+  border-color: #303172 !important;
+  color: #ffffff !important;
+}
+
+.p-paginator .p-paginator-page:not(.p-highlight):hover {
+  background-color: rgba(48, 49, 114, 0.06);
+  border-color: #303172;
+  color: #303172;
+}
+
+.p-paginator .p-paginator-next:not(.p-disabled):hover,
+.p-paginator .p-paginator-prev:not(.p-disabled):hover,
+.p-paginator .p-paginator-first:not(.p-disabled):hover,
+.p-paginator .p-paginator-last:not(.p-disabled):hover {
+  background-color: rgba(48, 49, 114, 0.06);
+  border-color: #303172;
+  color: #303172;
 }
