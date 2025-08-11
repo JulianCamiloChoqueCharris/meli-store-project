@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <MobileFilters />
           <div className="mx-auto w-full max-w-7xl">
             <div className="grid grid-cols-1 md:grid-cols-[18rem_1fr]">
-              <aside className="hidden md:block sticky top-16 h-[calc(100dvh-4rem)] overflow-y-auto">
+              <aside className="hidden md:block h-[calc(100dvh-4rem)] overflow-y-auto">
                 <SidebarCategories />
               </aside>
               <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
