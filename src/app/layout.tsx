@@ -1,33 +1,35 @@
 import "./globals.css";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
+import Header from "@/components/Header";
+import SidebarCategories from "@/components/SidebarCategories";
+import MobileFilters from "@/components/MobileFilters";
 import { Roboto } from "next/font/google";
-import Header from "@/components/layout/Header";
-import UiProviders from "@/components/providers/UiProviders";
-import { CategoriesSidebar } from "@/features/categories/components/CategoriesSidebar";
+import { PrimeReactProvider } from "primereact/api";
 
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-  variable: "--font-roboto",
+  display: "swap",
 });
-
-export const metadata = {
-  title: "Meli Store",
-  description:
-    "Seller product explorer with categories, pagination and filters",
-};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={roboto.variable} suppressHydrationWarning>
-      <body className="flex flex-col w-dvw min-h-dvh bg-white text-gray-900 antialiased">
-        <UiProviders>
+    <html lang="es">
+      <body
+        className={`${roboto.className} min-h-dvh bg-white text-[#030300] antialiased`}
+      >
+        <PrimeReactProvider value={{ ripple: true, inputStyle: "outlined" }}>
           <Header />
-          <div className="flex-1 mx-auto grid w-full max-w-screen-xl grid-cols-1 md:grid-cols-[18rem_1fr]">
-            <CategoriesSidebar />
-            <main className="min-h-[60dvh] p-4">{children}</main>
+          <MobileFilters />
+          <div className="mx-auto w-full max-w-7xl">
+            <div className="grid grid-cols-1 md:grid-cols-[18rem_1fr]">
+              <aside className="hidden md:block sticky top-16 h-[calc(100dvh-4rem)] overflow-y-auto">
+                <SidebarCategories />
+              </aside>
+              <main className="min-h-[calc(100dvh-4rem)]">{children}</main>
+            </div>
           </div>
-        </UiProviders>
+        </PrimeReactProvider>
       </body>
     </html>
   );
